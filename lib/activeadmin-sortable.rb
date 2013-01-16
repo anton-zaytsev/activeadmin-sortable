@@ -6,20 +6,28 @@ module ActiveAdmin
   module Sortable
     module ControllerActions
       def sortable
-        member_action :sort, :method => :post do
-          resource.insert_at params[:position].to_i
+        collection_action :sort, :method => :post do
+          params[:positions].each do |resource_id, position|
+            active_admin_collection.update resource_id, {"#{params[:field]}" => position}
+          end
+
           head 200
         end
       end
     end
 
     module TableMethods
-      HANDLE = '&#x2195;'.html_safe
+      HANDLE = '&#8801;'.html_safe
 
-      def sortable_handle_column
-        column '' do |resource|
-          sort_url = url_for([:sort, :admin, resource])
-          content_tag :span, HANDLE, :class => 'handle', 'data-sort-url' => sort_url
+      def sortable_handle_column *args
+        options = args.extract_options!
+        sortable_field = options[:field] || :weight
+
+        column '', class: 'handle' do |resource|
+          #require 'pry'
+          #binding.pry
+          sort_url = url_for([:sort, :admin, resource.class.name.downcase.pluralize])
+          content_tag :span, HANDLE, 'data-sort-url' => sort_url, 'data-field' => sortable_field, style: 'font-size: 16px;vertical-align: middle;cursor:move;'
         end
       end
     end
