@@ -26,7 +26,7 @@ module ActiveAdmin
         column '', class: 'handle' do |resource|
           #require 'pry'
           #binding.pry
-          sort_url = url_for([:sort, :admin, resource.class.name.downcase.pluralize])
+          sort_url = url_for(action: :sort)
           content_tag :span, HANDLE, 'data-sort-url' => sort_url, 'data-field' => sortable_field, style: 'font-size: 16px;vertical-align: middle;cursor:move;'
         end
       end

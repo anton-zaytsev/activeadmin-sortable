@@ -45,6 +45,7 @@
       },
       handle: ".handle",
       update: function(event, ui) {
+        var item = ui.item;
         var url = ui.item.find('[data-sort-url]').data('sort-url');
         var field = ui.item.find('[data-field]').data('field');
 
@@ -62,8 +63,21 @@
             field: field
           },
           success: function() {
-            console.log('success')
+            var td = item.find('td');
+            var old_color = td.css('background-color');
+            if (old_color == 'rgba(0, 0, 0, 0)') {
+              old_color = '#fff';
+            }
+            td.css('background-color', 'rgb(0, 240, 0)');
+            setTimeout(function(){
+              td.css('background-color', '');
+//              td.animate({'background-color': old_color}, {duration: 500, complete: function(){
+//                td.css('background-color', '');
+//              }});
+            }, 1000);
+//            console.log('success')
 //            window.location.reload()
+
           },
           error: function(){
 
