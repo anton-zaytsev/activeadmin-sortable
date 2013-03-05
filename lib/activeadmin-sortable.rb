@@ -24,10 +24,8 @@ module ActiveAdmin
         sortable_field = options[:field] || :weight
 
         column '', class: 'handle' do |resource|
-          #require 'pry'
-          #binding.pry
-          sort_url = url_for(action: :sort)
-          content_tag :span, HANDLE, 'data-sort-url' => sort_url, 'data-field' => sortable_field, style: 'font-size: 16px;vertical-align: middle;cursor:move;'
+          sort_url = "#{resource_path(resource)}/sort"
+          content_tag :span, HANDLE, :class => 'handle', 'data-sort-url' => sort_url, 'data-field' => sortable_field, style: 'font-size: 16px;vertical-align: middle;cursor:move;'
         end
       end
     end
