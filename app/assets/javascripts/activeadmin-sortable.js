@@ -68,16 +68,12 @@
             if (old_color == 'rgba(0, 0, 0, 0)') {
               old_color = '#fff';
             }
-            td.css('background-color', 'rgb(0, 240, 0)');
+            td.css('background-color', 'rgb(54, 245, 54);');
             setTimeout(function(){
-              td.css('background-color', '');
-//              td.animate({'background-color': old_color}, {duration: 500, complete: function(){
-//                td.css('background-color', '');
-//              }});
-            }, 1000);
-//            console.log('success')
-//            window.location.reload()
-
+              td.animate({'background-color': old_color}, {duration: 1000, complete: function(){
+                td.css('background-color', '');
+              }});
+            }, 1);
           },
           error: function(){
 
@@ -88,8 +84,6 @@
         });
       }
     });
-
-//    console.log(this.sortable( "option", "tolerance" ));
 
     this.disableSelection();
   }
