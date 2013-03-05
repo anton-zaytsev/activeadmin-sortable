@@ -23,10 +23,10 @@ end
 gem 'activeadmin-sortable'
 ```
 
-### Include the JavaScript in active_admin.js
+### Run install generator
 
-```javascript
-//= require activeadmin-sortable
+```bash
+rails g activeadmin_sortable:install
 ```
 
 ### Configure your ActiveAdmin Resource
@@ -39,7 +39,7 @@ ActiveAdmin.register Page do
   sortable # creates the controller action which handles the sorting
 
   index do
-    sortable_handle_column # inserts a drag handle
+    sortable_handle_column :field => :position # inserts a drag handle, by default it uses field weight
     # other columns...
   end
 end
