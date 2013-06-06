@@ -9,7 +9,7 @@ module ActiveAdmin
       def sortable
         collection_action :sort, :method => :post do
           params[:positions].each do |resource_id, position|
-            active_admin_collection.update resource_id, {"#{params[:field]}" => position}
+            self.collection.update resource_id, {"#{params[:field]}" => position}
           end
 
           head 200
