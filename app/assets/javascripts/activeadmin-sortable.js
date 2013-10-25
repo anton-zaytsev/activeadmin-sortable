@@ -64,14 +64,16 @@
           },
           success: function() {
             var td = item.find('td');
+            var tr = td.first().parent()
             var old_color = td.css('background-color');
             if (old_color == 'rgba(0, 0, 0, 0)') {
               old_color = '#fff';
             }
-            td.css('background-color', 'rgb(54, 245, 54);');
+            tr.addClass('success');
             setTimeout(function(){
               td.animate({'background-color': old_color}, {duration: 1000, complete: function(){
                 td.css('background-color', '');
+                tr.removeClass('success');
               }});
             }, 1);
           },

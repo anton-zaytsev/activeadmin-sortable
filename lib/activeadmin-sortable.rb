@@ -22,7 +22,7 @@ module ActiveAdmin
 
       def sortable_handle_column *args
         options = args.extract_options!
-        sortable_field = options[:field] || :weight
+        sortable_field = options[:field] || :position
 
         column '', class: 'handle' do |resource|
           sort_url = url_for(action: :sort)
