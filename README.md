@@ -20,7 +20,7 @@ end
 ### Add it to your Gemfile
 
 ```ruby
-gem 'activeadmin-sortable'
+gem 'activeadmin-sortable', github: 'antonzaytsev/activeadmin-sortable'
 ```
 
 ### Run install generator
